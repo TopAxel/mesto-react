@@ -1,10 +1,12 @@
 import React from 'react';
-
-function PopupWithForm({ title, name, children, isOpen, onClose }) {
+// компонент попапов 
+function PopupWithForm({ title, name, children, isOpen, onClose, onSubmit }) {
+  
+ // разметка
   return (
     <div className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : ''}`}>
       <div className="popup__conteiner">
-        <form className="form" name={`form-${name}`}>
+        <form className="form" name={`form-${name}`} onSubmit={onSubmit}>
           <h2 className="form__title">{title}</h2>
           <fieldset className="form__edit">
             {children}
