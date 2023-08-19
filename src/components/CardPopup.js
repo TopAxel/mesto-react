@@ -28,7 +28,7 @@ function CardPopup({ isOpen, onClose, onAddPlace }) {
 
     // разметка
     return (
-        <PopupWithForm title="Новое место" name="card" isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit}>
+        <PopupWithForm title="Новое место" name="card" isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit} buttonText={'Создать'}>
             <input className="form__field" type="text" id="new-place" name="name" placeholder="Название"
                 minLength="2" maxLength="30" required value={name} onChange={handleAddName} />
             <span className="form__field-error" id="new-place-error"></span>

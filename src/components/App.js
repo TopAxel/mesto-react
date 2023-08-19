@@ -132,10 +132,20 @@ function App() {
   };
 
   // удаление карточки
+  // const handleCardDelete = (card) => {
+  //   api.deleteCard(card._id)
+  //     .then(() => {
+  //       setCards((state) => state.filter((item) => item._id !== card._id));
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+
   const handleCardDelete = (card) => {
     api.deleteCard(card._id)
       .then(() => {
-        setCards((state) => state.filter((item) => item._id !== card._id));
+        setCards((prevCards) => prevCards.filter((c) => c._id !== card._id));
       })
       .catch((error) => {
         console.log(error);
@@ -144,10 +154,10 @@ function App() {
 
   // разметка 
   return (
+    <CurrentUserContext.Provider value={currentUser}>
     <div className="page">
       <div className="page__container">
         <Header />
-        <CurrentUserContext.Provider value={currentUser}>
           <Main onEditAvatar={handleEditAvatarClick}
             onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
@@ -155,7 +165,6 @@ function App() {
             cards={cards}
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete} />
-        </CurrentUserContext.Provider>
         <Footer />
         <ProfilePopup
           isOpen={isEditProfilePopupOpen}
@@ -175,6 +184,7 @@ function App() {
           onClose={closeAllPopups} />
       </div>
     </div>
+    </CurrentUserContext.Provider>
   );
 }
 

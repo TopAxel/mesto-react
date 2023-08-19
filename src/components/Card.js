@@ -6,10 +6,10 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = React.useContext(CurrentUserContext);
 
   const isOwn = card.owner._id === currentUser._id;
-  const isLiked = card.likes.some(i => i._id === currentUser._id);
+  // const cardDeleteButtonClassName = ( `element__delete-icon ${isOwn ? 'element__delete-icon_active' : ''}` ); 
 
-  const cardDeleteButtonClassName = `element__delete-icon ${isOwn ? 'element__delete-icon_active' : ''}`;
-  const cardLikeButtonClassName = `element__like-icon ${isLiked ? 'element__like-icon_active' : ''}`;
+  const isLiked = card.likes.some(i => i._id === currentUser._id);
+  const cardLikeButtonClassName = (`element__like-icon ${isLiked ? 'element__like-icon_active' : ''}`);
 
   // обработчики
   const handleDeleteClick = () => {
@@ -27,7 +27,8 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   // разметка
   return (
     <li className="element__card">
-      <button className={cardDeleteButtonClassName} type="button" aria-label="удалить" onClick={handleDeleteClick}></button>
+      {isOwn && (
+        <button className='element__delete-icon' type="button" aria-label="удалить" onClick={handleDeleteClick}></button>)}
       <img className="element__photo" src={card.link} alt={card.name} onClick={handleClick} />
       <h2 className="element__title">{card.name}</h2>
       <ul className="element__like-box">
@@ -39,3 +40,4 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
 }
 
 export default Card;
+

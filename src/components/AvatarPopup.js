@@ -18,7 +18,7 @@ function AvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
 
     // разметка
     return (
-        <PopupWithForm title="Обновить аватар" name="avatar" isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit}>
+        <PopupWithForm title="Обновить аватар" name="avatar" isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit} buttonText={'Сохранить'}>
             <input ref={avatarRef} className="form__field" type="url" id="avatar" name="avatar"
                 placeholder="Введите ссылку на аватар" minLength="2" maxLength="200" required />
             <span className="form__field-error" id="avatar-error"></span>

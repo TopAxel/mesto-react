@@ -1,6 +1,6 @@
 import React from 'react';
 // компонент попапов 
-function PopupWithForm({ title, name, children, isOpen, onClose, onSubmit }) {
+function PopupWithForm({ title, name, children, isOpen, onClose, onSubmit, buttonText }) {
   
  // разметка
   return (
@@ -11,7 +11,7 @@ function PopupWithForm({ title, name, children, isOpen, onClose, onSubmit }) {
           <fieldset className="form__edit">
             {children}
           </fieldset>
-          <button className="form__submit-button" type="submit">Сохранить</button>
+          <button className="form__submit-button" type="submit">{buttonText}</button>
         </form>
         <button className="popup__close-icon" type="button" aria-label="Закрыть" onClick={onClose} />
       </div>
